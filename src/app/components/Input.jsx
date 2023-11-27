@@ -1,5 +1,23 @@
-export default function Input({ }) {
-  
+export default function Input({type, placeholder, name, id, className}) {
+    if (type == "textarea") {
+        return (
+            <textarea
+                placeholder={placeholder}
+                name={name}
+                id={id}
+                className={className}
+            />
+        );
+    }
+    return (
+        <input
+            type={type}
+            placeholder={placeholder}
+            name={name}
+            id={id}
+            className={className}
+        />
+    );
 }
 // Instructions:
 /*
@@ -10,7 +28,7 @@ export default function Input({ }) {
     - placeholder
         - default value of “enter text here…”
     - name
-    - id 
+    - id
 - attributes
     - className - make the input look decent
     - type - uses the `type` prop from above

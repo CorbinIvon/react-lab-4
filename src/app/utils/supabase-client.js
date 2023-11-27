@@ -8,9 +8,21 @@ export function getClient() {
   return supabase;
 }
 
-export async function insertCard(card) {
+export default async function insertCard(card) {
   const supabase = getClient()
   // implement https://supabase.com/docs/reference/javascript/insert
+
+const { data, error } = await supabase
+  .from('Cards')
+  .insert({ 
+    title: card.title,
+    subtitle: card.subtitle,
+    img: card.img,
+    description: card.description
+  })
+  console.log('data: ' + data);
+  console.log('error');
+  console.log(error);
 }
 
 export async function findCards() {

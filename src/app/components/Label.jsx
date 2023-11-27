@@ -1,5 +1,9 @@
-export default function Label({ }) {
-  
+export default function Label({ label, htmlFor}) {
+  return (
+    <label className="block mt-4" htmlFor={htmlFor}>
+      <span className="text-gray-200">{label}</span>
+    </label>
+  );
 }
 // Instructions:
 /*
