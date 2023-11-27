@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next/image'
 
 export default function Card({
   title = 'Placeholder Title',
@@ -7,7 +7,7 @@ export default function Card({
   description = 'Placeholder description',
 }) {
   const hoverEffect =
-    'px-2 py-2 rounded-lg mx-2 shadow-md hover:shadow-lg m-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105 max-w-sm max-h-sm';
+    'px-2 py-2 rounded-lg mx-2 shadow-md hover:shadow-lg m-2 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105 max-w-sm max-h-sm'
   return (
     <>
       <a className={hoverEffect}>
@@ -19,5 +19,5 @@ export default function Card({
         </div>
       </a>
     </>
-  );
+  )
 }

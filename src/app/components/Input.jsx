@@ -1,23 +1,8 @@
-export default function Input({type, placeholder, name, id, className}) {
-    if (type == "textarea") {
-        return (
-            <textarea
-                placeholder={placeholder}
-                name={name}
-                id={id}
-                className={className}
-            />
-        );
-    }
-    return (
-        <input
-            type={type}
-            placeholder={placeholder}
-            name={name}
-            id={id}
-            className={className}
-        />
-    );
+export default function Input({ type, placeholder, name, id, className }) {
+  if (type == 'textarea') {
+    return <textarea placeholder={placeholder} name={name} id={id} className={className} />
+  }
+  return <input type={type} placeholder={placeholder} name={name} id={id} className={className} />
 }
 // Instructions:
 /*
