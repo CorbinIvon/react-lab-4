@@ -1,31 +1,31 @@
 import { createClient } from '@supabase/supabase-js'
+import Card from '../components/Card'
 const supabaseUrl = 'https://xbaugsvuvnumbzjzsygn.supabase.co'
 const supabaseKey = process.env.SUPABASE_KEY
 
 export function getClient() {
-  const supabase = createClient(supabaseUrl, supabaseKey)
-  return supabase
+  return createClient(supabaseUrl, supabaseKey)
 }
 
-export default async function insertCard(card) {
+export async function insertCard(card = { title: null, subtitle: null, img: null, description: null }) {
   const supabase = getClient()
   // implement https://supabase.com/docs/reference/javascript/insert
 
-  const { data, error } = await supabase.from('Cards').insert({
+  const { data: Cards, error } = await supabase.from('Cards').insert({
     title: card.title,
     subtitle: card.subtitle,
     img: card.img,
     description: card.description,
   })
-  // console.log('data: ' + data);
-  if (error) {
-    console.log('error')
-    console.log(error)
-  }
+  // Insert the card into the DOM. Insert into the id="cards-container" div
+  return <Card title={card.title} subtitle={card.subtitle} img={card.img} description={card.description} />
 }
 
 export async function findCards() {
   const supabase = getClient()
   // implements https://supabase.com/docs/reference/javascript/select
-  const { data, error } = await supabase.from('Cards').select('*')
+
+  const { data: Cards, error } = await supabase.from('Cards').select('*')
+  if (error) console.log(error)
+  return Cards
 }

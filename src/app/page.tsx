@@ -1,9 +1,12 @@
 import Card from './components/Card.jsx'
 import CardForm from './components/CardForm.jsx'
-import findCards from './utils/supabase-client'
+import { findCards } from './utils/supabase-client'
 
-export default function Home() {
-  const cards = findCards()
+export default async function Home() {
+  const cards = await findCards()
+  const cardsContent = cards?.map((card) => (
+    <Card key={card.id} title={card.title} subtitle={card.subtitle} img={card.img} description={card.description} />
+  ))
   return (
     <div className="m-8">
       <h1 className="text-lg">Corbin Meier - REACT LAB 04</h1>
@@ -12,7 +15,7 @@ export default function Home() {
         <CardForm />
       </div>
       <div className="cards-content flex flex-wrap" id="cards-container">
-        {}
+        {cardsContent}
       </div>
     </div>
   )

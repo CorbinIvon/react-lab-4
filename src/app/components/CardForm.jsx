@@ -1,4 +1,4 @@
-import insertCard from '../utils/supabase-client'
+import { insertCard } from '../utils/supabase-client'
 
 async function createCard(formData) {
   'use server'
@@ -7,8 +7,9 @@ async function createCard(formData) {
   const subtitle = formData.get('subtitle')
   const img = formData.get('img')
   const description = formData.get('description')
-  // call supabase-client insertCard
-  insertCard({ title, subtitle, img, description })
+  // call supabase-client insertCard\
+  const card = { title: title, subtitle: subtitle, img: img, description: description }
+  await insertCard(card)
 }
 
 import Field from './Field'
